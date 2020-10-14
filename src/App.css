@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.MuiAvatarGroup-avatar {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 16px !important;
+}
+.smooth-dnd-container.horizontal {
+  white-space: normal !important;
+}
+
+.MuiPaper-elevation1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.MuiPaper-elevation1:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.22);
+}
+
+.separator {
+  display: flex;
+  position: relative;
+  align-items: center;
+  text-align: center;
+  font-size: 24px;
+  max-width: 1100px;
+  padding: 0 12px;
+  margin: 12px auto;
+  color: #877457;
+}
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  z-index: -1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.separator::before {
+  margin-right: 0.25em;
+}
+.separator::after {
+  margin-left: 0.25em;
+}
+
+.separator_btn {
+  max-width: 100%;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 24px;
+  padding: 4px 12px;
+  position: absolute;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.separator_btn span {
+  font-size: 24px;
+  margin-right: 6px;
+  color: #f44336;
+}
+
+.login {
+  background: url('./images/remote.svg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+
+.login-btn {
+  background-color: #6C63FF!important;
+}
