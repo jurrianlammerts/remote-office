@@ -1,13 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 
 import HomeIcon from '@material-ui/icons/Home';
-import GroupIcon from '@material-ui/icons/Group';
-import ScheduleIcon from '@material-ui/icons/Schedule';
+// import GroupIcon from '@material-ui/icons/Group';
+// import ScheduleIcon from '@material-ui/icons/Schedule';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import AuthContext from '../Context/authContext';
 
 import Logo from './Logo';
 
@@ -43,10 +44,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = ({ logout, user, callAPI }) => {
+const Navbar = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+
+  const authContext = useContext(AuthContext);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -67,7 +70,7 @@ const Navbar = ({ logout, user, callAPI }) => {
     }
   }
 
-  function getInitials (nameString) {
+  function getInitials(nameString) {
     const fullName = nameString.split(' ');
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
@@ -83,79 +86,87 @@ const Navbar = ({ logout, user, callAPI }) => {
     prevOpen.current = open;
   }, [open]);
 
+  const { user, logout, callAPI } = authContext;
+
   return (
     <div>
       <nav className="nav">
         <div className="logo">
           <Logo />
         </div>
-        <ul className="nav_list">
-          <li>
-            <Link to="/admin">
-              <HomeIcon />
-              Home
-            </Link>
-          </li>
-          {/* <li>
+        {user && (
+          <div>
+            <ul className="nav_list">
+              <li>
+                <Link to="/">
+                  <HomeIcon />
+                  Home
+                </Link>
+              </li>
+              {/* <li>
             <Link to="/planning">
-              <ScheduleIcon />
-              Planning
+            <ScheduleIcon />
+            Planning
             </Link>
           </li> */}
 
-          <li>
-            <Link to="/sprint">
-              <DashboardIcon />
-              Sprint board
-            </Link>
-          </li>
-        </ul>
-        <div className="avatar">
-          <IconButton
-            color="inherit"
-            aria-label="open profile"
-            aria-controls={open ? 'menu-list-grow' : undefined}
-            aria-haspopup="true"
-            onClick={handleToggle}
-            edge="end"
-            className={classes.menuButton}
-            ref={anchorRef}
-          >
-            <Avatar className={classes.avatar}>{getInitials(user.name)}</Avatar>
-          </IconButton>
-        </div>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          className={classes.popper}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                zIndex: 3,
-                transformOrigin:
-                  placement === 'bottom' ? 'center top' : 'center bottom',
-              }}
+              <li>
+                <Link to="/sprint">
+                  <DashboardIcon />
+                  Sprint board
+                </Link>
+              </li>
+            </ul>
+            <div className="avatar">
+              <IconButton
+                color="inherit"
+                aria-label="open profile"
+                aria-controls={open ? 'menu-list-grow' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+                edge="end"
+                className={classes.menuButton}
+                ref={anchorRef}
+              >
+                <Avatar className={classes.avatar}>
+                  {getInitials(user.name)}
+                </Avatar>
+              </IconButton>
+            </div>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              className={classes.popper}
+              role={undefined}
+              transition
+              disablePortal
             >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    <MenuItem onClick={callAPI}>My account</MenuItem>
-                    <MenuItem onClick={logout}>Logout</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    zIndex: 3,
+                    transformOrigin:
+                      placement === 'bottom' ? 'center top' : 'center bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="menu-list-grow"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <MenuItem onClick={callAPI}>My account</MenuItem>
+                        <MenuItem onClick={logout}>Logout</MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
+        )}
       </nav>
     </div>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import image from '../../images/Screenshot 2020-10-01 at 14.49.21.png';
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -26,7 +25,7 @@ export default function Projects() {
 
   return (
     <div className={classes.content}>
-      <img src={image} className={classes.img} />
+      planning
     </div>
   );
 }

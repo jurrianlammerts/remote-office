@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Card from '../Card';
-import CardSkeleton from '../CardSkeleton';
-import Divider from '../Divider';
+import Card from '../Components/Card';
+import CardSkeleton from '../Components/CardSkeleton';
+import Divider from '../Components/Divider';
 
 const useStyles = makeStyles((theme) => ({
   flex: {

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import { MicrosoftLoginButton } from 'react-social-login-buttons';
 
-import Logo from './Logo';
+import AuthContext from '../Context/authContext';
+
+import Logo from '../Components/Logo';
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -26,11 +29,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HomePage({ login, apiCallFailed, user }) {
+export default function LoginPage() {
+  const authContext = useContext(AuthContext);
   const classes = useStyles();
+
   return (
     <div className="login">
-      {user && <Redirect to="/admin" />}
+      {authContext.user && (
+        <Redirect
+          to={{
+            pathname: '/',
+          }}
+        />
+      )}
       <div className={classes.login}>
         <Card>
           <div className={classes.logo}>
@@ -40,11 +51,10 @@ export default function HomePage({ login, apiCallFailed, user }) {
             <Typography variant="body1" component="p" className={classes.text}>
               Welcome back, please login!
             </Typography>
-            <MicrosoftLoginButton onClick={login} className="login-btn" />
-
-            {apiCallFailed && (
-              <strong key="apiCallFailed">Graph API call unsuccessful</strong>
-            )}
+            <MicrosoftLoginButton
+              onClick={authContext.login}
+              className="login-btn"
+            />
           </div>
         </Card>
       </div>

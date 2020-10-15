@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Card from '../Card';
-import CardSkeleton from '../CardSkeleton';
-import Divider from '../Divider';
-import { allTeams, allProjects, companyNews } from '../../utils/fakeData';
+import Card from '../Components/Card';
+import CardSkeleton from '../Components/CardSkeleton';
+import Divider from '../Components/Divider';
+import { allTeams, allProjects, companyNews } from '../utils/fakeData';
 import TeamsSection from './TeamsSection';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,16 +23,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Page() {
+function AdminPage({ user }) {
   const classes = useStyles();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 600);
     return () => clearTimeout(timer);
-  }, []);
+  }, [user]);
 
   return (
     <div className={classes.content}>
@@ -67,3 +67,4 @@ export default function Page() {
     </div>
   );
 }
+export default AdminPage;
