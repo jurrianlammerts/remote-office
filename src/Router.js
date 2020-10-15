@@ -27,11 +27,7 @@ const Routes = () => {
     let foundProject = projects.find(
       (projectObj) => projectObj.id === projectId,
     );
-    return foundProject ? (
-      <SingleItemPage item={foundProject} />
-    ) : (
-      <NotFound />
-    );
+    return foundProject ? <SingleItemPage item={foundProject} /> : <NotFound />;
   };
 
   const renderTeams = (routerProps) => {
@@ -45,7 +41,7 @@ const Routes = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route path="/login" component={LoginPage} />
+        <Route exact path="/login" component={LoginPage} />
 
         <PrivateRoute exact path="/" component={AdminPage} />
 
@@ -63,7 +59,7 @@ const Routes = () => {
         <PrivateRoute path="/projects" component={ProjectsPage} />
         <PrivateRoute path="/planning" component={PlanningPage} />
         <PrivateRoute path="/sprint" component={KanbanPage} />
-        
+
         <Route component={NotFound} />
       </Switch>
     </Router>
