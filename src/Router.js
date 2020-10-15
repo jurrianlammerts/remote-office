@@ -41,9 +41,9 @@ const Routes = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/login" component={LoginPage} />
+        <Route path="/login" component={LoginPage} />
 
-        <PrivateRoute exact path="/" component={AdminPage} />
+        <PrivateRoute path="/admin" component={AdminPage} />
 
         <Route
           path="/teams/:id"
