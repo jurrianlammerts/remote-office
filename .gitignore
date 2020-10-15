@@ -70,5 +70,4 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
-
-src/services/authService.js
+.env
