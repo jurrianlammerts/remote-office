@@ -6,6 +6,7 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import ProjectDivider from '../Components/ProjectDivider';
+import PageSettingsMenu from '../Components/PageSettings';
 
 const useStyles = makeStyles({
   root: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
     background: 'white',
     paddingBottom: 48,
     borderRadius: 12,
+    position: 'relative',
   },
   avatarGroup: {
     justifyContent: 'center',
@@ -31,6 +33,11 @@ const useStyles = makeStyles({
   },
   board: {
     padding: '24px 0',
+  },
+  navButton: {
+    position: 'absolute',
+    top: 24,
+    right: 24,
   },
 });
 
@@ -67,6 +74,9 @@ export default function SingleItemPage({ item }) {
 
   return (
     <div className={classes.root}>
+      <div className={classes.navButton}>
+        <PageSettingsMenu />
+      </div>
       <div className={classes.content}>
         <Typography
           variant="h3"
