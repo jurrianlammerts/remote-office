@@ -6,8 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import HomeIcon from '@material-ui/icons/Home';
 // import GroupIcon from '@material-ui/icons/Group';
-// import ScheduleIcon from '@material-ui/icons/Schedule';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 import AuthContext from '../Context/authContext';
 
 import Logo from './Logo';
@@ -100,20 +99,13 @@ const Navbar = () => {
               <li>
                 <Link to="/">
                   <HomeIcon />
-                  Home
+                  Dashboard
                 </Link>
               </li>
-              {/* <li>
-            <Link to="/planning">
-            <ScheduleIcon />
-            Planning
-            </Link>
-          </li> */}
-
               <li>
                 <Link to="/sprint">
-                  <DashboardIcon />
-                  Sprint board
+                  <ScheduleIcon />
+                  Schedule
                 </Link>
               </li>
             </ul>

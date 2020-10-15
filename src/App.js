@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import AuthContext from './Context/authContext';
 
@@ -10,6 +11,24 @@ import Router from './Router';
 
 const authService = new AuthService();
 const graphService = new GraphService();
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#6c63ff',
+      contrastText: '#fff',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      main: '#ba63ff',
+      // dark: will be calculated from palette.secondary.main,
+      contrastText: '#fff',
+    },
+    // error: will use the default color
+  },
+});
 
 function App() {
   const [user, setUser] = useState(null);
@@ -61,17 +80,19 @@ function App() {
 
   return (
     <div className="App">
-      <AuthContext.Provider
-        value={{
-          user: user,
-          userInfo: userInfo,
-          login: login,
-          logout: logout,
-          callAPI: callAPI,
-        }}
-      >
-        <Router />
-      </AuthContext.Provider>
+      <ThemeProvider theme={theme}>
+        <AuthContext.Provider
+          value={{
+            user: user,
+            userInfo: userInfo,
+            login: login,
+            logout: logout,
+            callAPI: callAPI,
+          }}
+        >
+          <Router />
+        </AuthContext.Provider>
+      </ThemeProvider>
     </div>
   );
 }

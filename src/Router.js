@@ -5,8 +5,7 @@ import AuthContext from './Context/authContext';
 import Navbar from './Components/Navbar';
 import PrivateRoute from './Components/PrivateRoute';
 
-import SingleTeamPage from './Pages/SingleTeamPage';
-import SingleProjectPage from './Pages/SingleProjectPage';
+import SingleItemPage from './Pages/SingleItemPage';
 import AdminPage from './Admin';
 import KanbanPage from './Pages/KanbanPage';
 import ProjectsPage from './Pages/ProjectsPage';
@@ -29,7 +28,7 @@ const Routes = () => {
       (projectObj) => projectObj.id === projectId,
     );
     return foundProject ? (
-      <SingleProjectPage item={foundProject} />
+      <SingleItemPage item={foundProject} />
     ) : (
       <NotFound />
     );
@@ -39,10 +38,8 @@ const Routes = () => {
     if (!authContext.user) return;
     let teamId = parseInt(routerProps.match.params.id);
     let foundTeam = teams.find((teamObj) => teamObj.id === teamId);
-    return foundTeam ? <SingleTeamPage item={foundTeam} /> : <NotFound />;
+    return foundTeam ? <SingleItemPage item={foundTeam} /> : <NotFound />;
   };
-
-  console.log('authContext: ', authContext);
 
   return (
     <Router>

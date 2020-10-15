@@ -1,13 +1,13 @@
 const allTeams = [
   {
     id: 1,
-    title: 'Marketing',
+    title: 'Marketing 💸',
     body: 'Ad campaigns, newsletters, apparel and E-commerce',
     people: [{ shortName: 'AB' }, { shortName: 'CD' }, { shortName: 'EF' }],
   },
   {
     id: 2,
-    title: 'Strategy',
+    title: 'Strategy 📈',
     body:
       'The goals and objectives, the type of products/services that we plan to build',
     people: [
@@ -22,13 +22,13 @@ const allTeams = [
   },
   {
     id: 3,
-    title: 'Core Product',
+    title: 'Core Product 💎',
     body: 'Building the product',
     people: [{ shortName: 'AB' }, { shortName: 'CD' }],
   },
   {
     id: 4,
-    title: 'Dev',
+    title: 'Dev 👨‍💻',
     body: 'Dev teams and Tech stuff',
     people: [
       { shortName: 'EF' },
@@ -40,7 +40,7 @@ const allTeams = [
   },
   {
     id: 5,
-    title: 'Component Lib',
+    title: 'Component Lib 📖',
     body: 'Building the foundation of all new products',
     people: [
       { shortName: 'GH' },
@@ -52,7 +52,7 @@ const allTeams = [
   },
   {
     id: 6,
-    title: 'Team Winning',
+    title: 'Team Winning 💯',
     body: 'The best working team in office',
     people: [
       { shortName: 'CD' },
@@ -67,9 +67,8 @@ const allTeams = [
 const allProjects = [
   {
     id: 4,
-    title: 'Innovation pitch',
-    body: `What is the expected positive effect for our business? This may be tangible or intangible, and ideally both.
-      Is there a way to think big but start small? What is the cost to build and launch the proposition?`,
+    title: 'Innovation pitch 👩‍🏫',
+    body: `What is the expected positive effect for our business? This may be tangible or intangible, and ideally both.`,
     people: [
       { shortName: 'EF' },
       { shortName: 'XA' },
@@ -110,13 +109,13 @@ const allProjects = [
   },
   {
     id: 1,
-    title: 'Tech Meetup',
+    title: 'Tech Meetup 💻',
     body: 'A collective meetup to discuss all upcoming trends in software',
     people: [{ shortName: 'AB' }, { shortName: 'CD' }, { shortName: 'EF' }],
   },
   {
     id: 2,
-    title: 'Beach party',
+    title: 'Beach party 🏖',
     body: 'Organizing all the food, music and good vibes',
     people: [
       { shortName: 'CD' },
@@ -130,7 +129,7 @@ const allProjects = [
   },
   {
     id: 3,
-    title: 'SLA',
+    title: 'SLA 🛒',
     body: 'Service level agreements with all clients',
     people: [{ shortName: 'AB' }, { shortName: 'CD' }],
   },
@@ -139,12 +138,12 @@ const allProjects = [
 const companyNews = [
   {
     id: 0,
-    title: 'Welcome!',
+    title: 'Welcome! 👋',
     body: 'This dashboard will help you with all the information you need.',
   },
   {
     id: 1,
-    title: 'FabNews',
+    title: '𝐅𝐚𝐛𝐫𝐢𝐪𝐮𝐞 𝐧𝐞𝐰𝐬',
     body: 'Company-wide announcements and stuff everyone needs to know.',
   },
 ];
