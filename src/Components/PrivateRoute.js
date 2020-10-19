@@ -6,6 +6,8 @@ import AuthContext from '../Context/authContext';
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
 
+  console.log('authContext: ', authContext);
+
   return (
     <Route
       {...rest}

@@ -22,7 +22,6 @@ const Routes = () => {
   const [projects, setProjects] = useState(allProjects);
 
   const renderProjects = (routerProps) => {
-    if (!authContext.user) return;
     let projectId = parseInt(routerProps.match.params.id);
     let foundProject = projects.find(
       (projectObj) => projectObj.id === projectId,
@@ -31,7 +30,6 @@ const Routes = () => {
   };
 
   const renderTeams = (routerProps) => {
-    if (!authContext.user) return;
     let teamId = parseInt(routerProps.match.params.id);
     let foundTeam = teams.find((teamObj) => teamObj.id === teamId);
     return foundTeam ? <SingleItemPage item={foundTeam} /> : <NotFound />;
@@ -42,8 +40,6 @@ const Routes = () => {
       <Navbar />
       <Switch>
         <Route path="/login" component={LoginPage} />
-
-        <PrivateRoute path="/" component={AdminPage} />
 
         <Route
           path="/teams/:id"
@@ -59,6 +55,7 @@ const Routes = () => {
         <PrivateRoute path="/projects" component={ProjectsPage} />
         <PrivateRoute path="/planning" component={PlanningPage} />
         <PrivateRoute path="/sprint" component={KanbanPage} />
+        <PrivateRoute path="/" component={AdminPage} />
 
         <Route component={NotFound} />
       </Switch>

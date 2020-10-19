@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import Board from 'react-trello';
 
 import Typography from '@material-ui/core/Typography';
@@ -7,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import ProjectDivider from '../Components/ProjectDivider';
 import PageSettingsMenu from '../Components/PageSettings';
+import AuthContext from '../Context/authContext';
 
 const useStyles = makeStyles({
   root: {
@@ -62,11 +64,16 @@ const initialData = {
   ],
 };
 
-export default function SingleItemPage({ item }) {
+function SingleItemPage({ item, history }) {
+  const authContext = useContext(AuthContext);
   const classes = useStyles();
   const [data, setData] = useState(initialData);
   const [openKanban, setKanbanOpen] = useState(false);
   const [openSimplicate, setSimplicateOpen] = useState(false);
+
+  useEffect(() => {
+    !authContext.user && history.push('/login');
+  }, [authContext, history]);
 
   const addToPage = () => {
     console.log('add');
@@ -120,3 +127,5 @@ export default function SingleItemPage({ item }) {
     </div>
   );
 }
+
+export default withRouter(SingleItemPage);
